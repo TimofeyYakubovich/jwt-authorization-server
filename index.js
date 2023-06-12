@@ -16,8 +16,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-var allowedOrigins = ['http://localhost:3000',
-                      'http://yourapp.com'];
+var allowedOrigins = [rocess.env.CLIENT_URL];
 
 app.use(express.json());
 app.use(cookieParser()); // что бы работал res.cookie
@@ -27,15 +26,15 @@ app.use(cors({
     origin: process.env.CLIENT_URL, // указываем юрл фронтенда
     // exposedHeaders: '*',
 
-    // origin: function(origin, callback){    // allow requests with no origin 
-    //     // (like mobile apps or curl requests)
-    //     if(!origin) return callback(null, true);    
-    //     if(allowedOrigins.indexOf(origin) === -1){
-    //       var msg = 'The CORS policy for this site does not ' +
-    //                 'allow access from the specified Origin.';
-    //       return callback(new Error(msg), false);
-    //     }    return callback(null, true);
-    //   }
+    origin: function(origin, callback){    // allow requests with no origin 
+        // (like mobile apps or curl requests)
+        if(!origin) return callback(null, true);    
+        if(allowedOrigins.indexOf(origin) === -1){
+          var msg = 'The CORS policy for this site does not ' +
+                    'allow access from the specified Origin.';
+          return callback(new Error(msg), false);
+        }    return callback(null, true);
+      }
 }))
 app.use('/api', router)
 // когда подключаем мидлвеер для обработки ошибок он обезательно должен идти последним в цепочке мидлвееров
