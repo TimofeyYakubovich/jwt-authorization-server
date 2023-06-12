@@ -38,7 +38,7 @@ app.use(cors({
     //     }    return callback(null, true);
     //   }
 }))
-app.use('/api',cors(), router)
+app.use('/api', router)
 // когда подключаем мидлвеер для обработки ошибок он обезательно должен идти последним в цепочке мидлвееров
 app.use(errorMiddleware)
 
