@@ -23,8 +23,8 @@ app.use(cookieParser()); // что бы работал res.cookie
 app.use(cors({
     // надо указать с каким доеном ему надо обмениваться куками
     credentials: true, // разрешаем куки
-    // origin: process.env.CLIENT_URL, // указываем юрл фронтенда
-    origin: ["https://jwt-authorization-client.vercel.app"],
+    origin: process.env.CLIENT_URL, // указываем юрл фронтенда
+    // origin: ["https://jwt-authorization-client.vercel.app"],
     exposedHeaders: '*'
     
 
