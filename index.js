@@ -25,7 +25,7 @@ app.use(cors({
     // надо указать с каким доеном ему надо обмениваться куками
     credentials: true, // разрешаем куки
     // origin: process.env.CLIENT_URL, // указываем юрл фронтенда
-    // exposedHeaders: '*',
+    exposedHeaders: '*',
 
     origin: function(origin, callback){    // allow requests with no origin 
         // (like mobile apps or curl requests)
