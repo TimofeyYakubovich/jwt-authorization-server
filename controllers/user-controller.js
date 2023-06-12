@@ -16,7 +16,7 @@ class userController {
             // что бы эту куку нельзя было изменять и получать внутри браузера с помощью JS
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             // функция registration возврощает токены и иформацию о пользователе возврощаем их на клиент
-            return res.header({'Access-Control-Allow-Origin': '*'}).json(userData)
+            return res.json(userData)
         } catch (e) {
             // console.log(e)
             // вместо console.log вызываем функцию next и туда передаем ошибку если в этот next попадает ApiError он будет обработан
@@ -30,7 +30,7 @@ class userController {
             const {email, password} = req.body;
             const userData = await userService.login(email, password);
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
-            return res.header({'Access-Control-Allow-Origin': '*'}).json(userData)
+            return res.json(userData)
         } catch (e) {
             next(e);
         }
