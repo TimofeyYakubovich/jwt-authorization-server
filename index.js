@@ -25,7 +25,7 @@ app.use(cors({
     credentials: true, // разрешаем куки
     // origin: process.env.CLIENT_URL, // указываем юрл фронтенда
     origin: ["https://jwt-authorization-client.vercel.app/"],
-    exposedHeaders: '*',
+    // exposedHeaders: '*',
     
 
     // origin: function(origin, callback){    // allow requests with no origin 
